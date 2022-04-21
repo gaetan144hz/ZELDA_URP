@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class interact : MonoBehaviour
 {
     public GameObject text;
+    public CinemachineVirtualCamera cvCam;
     
     void Start()
     {
@@ -24,6 +25,7 @@ public class interact : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Press E");
+            cvCam.m_Priority = 11;
             text.SetActive(true);
         }
     }
@@ -33,6 +35,7 @@ public class interact : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Stop"); 
+            cvCam.m_Priority = 9;
             text.SetActive(false);
         }
     }
