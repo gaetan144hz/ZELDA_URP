@@ -10,12 +10,15 @@ public class teleport : MonoBehaviour
     public CharacterController controller;
     public Transform tpTarget;
 
+    private inventaire _inventaire;
+    public GameObject notAllowed;
+
     public CinemachineVirtualCamera cvCamINT;
     [SerializeField] private int CamPriority;
     
     void Start()
     {
-        
+        _inventaire = FindObjectOfType<inventaire>();
     }
 
     void Update()
@@ -25,10 +28,22 @@ public class teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        controller.enabled = false;
-        cvCamINT.m_Priority = CamPriority;
-        other.gameObject.transform.position = tpTarget.position;
-        other.gameObject.transform.rotation = tpTarget.rotation;
-        controller.enabled = true;
+        if (_inventaire.count == 3)
+        {
+            controller.enabled = false;
+            cvCamINT.m_Priority = CamPriority;
+            other.gameObject.transform.position = tpTarget.position;
+            other.gameObject.transform.rotation = tpTarget.rotation;
+            controller.enabled = true;
+        }
+        else
+        {
+            notAllowed.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        notAllowed.SetActive(false);
     }
 }
