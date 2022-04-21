@@ -19,20 +19,12 @@ public class interact : MonoBehaviour
         
     }
 
-    public void OnInteract(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            text.SetActive(true);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Press E");
             text.SetActive(true);
-            Debug.Log("Press E"); 
         }
     }
 
