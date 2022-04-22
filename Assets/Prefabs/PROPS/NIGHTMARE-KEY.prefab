@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5996715863567971169}
   - component: {fileID: 2434804111609927383}
   - component: {fileID: 576515689285399337}
+  - component: {fileID: 4652828487497619182}
   m_Layer: 0
   m_Name: NIGHTMARE-KEY
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5204016290024690356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 56.114452, y: 1.17, z: 36.286167}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,5 +110,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea62d81e3cddb2448af260b032c8a20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: {fileID: 0}
-  count: 0
+--- !u!95 &4652828487497619182
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204016290024690356}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79b942ca4cc76de49abca249e8a36fdd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -7,6 +7,7 @@ public class inventaire : MonoBehaviour
 {
     public TextMeshProUGUI counter;
     public int count;
+    public int oneKey;
     
     void Start()
     {
@@ -20,7 +21,7 @@ public class inventaire : MonoBehaviour
 
     public void takeKey()
     {
-        count += 1;
+        count += oneKey;
         counter.text = count.ToString("0");
     }
 }

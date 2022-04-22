@@ -3,22 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Serialization;
 
 public class teleport : MonoBehaviour
 {
+    [Header("TP")]
     public GameObject Player;
     public CharacterController controller;
-    public Transform tpTarget;
+    public Transform tpToTarget;
 
+    [Header("Inventaire")]
     private inventaire _inventaire;
+    private reparation _reparation;
     public GameObject notAllowed;
+    
+    [Header("Animation Chargement")]
+    public GameObject canvasLoading;
+    public Animator canvasLoadingAnimator;
+    public CanvasGroup canvasLoadingGroup;
 
+    [Header("Camera")]
     public CinemachineVirtualCamera cvCamINT;
     [SerializeField] private int CamPriority;
     
     void Start()
     {
+        canvasLoadingGroup.alpha = 0;
         _inventaire = FindObjectOfType<inventaire>();
+        _reparation = FindObjectOfType<reparation>();
     }
 
     void Update()
@@ -28,18 +40,27 @@ public class teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_inventaire.count == 3)
+        if (_reparation.canOpen == true)
         {
-            controller.enabled = false;
-            cvCamINT.m_Priority = CamPriority;
-            other.gameObject.transform.position = tpTarget.position;
-            other.gameObject.transform.rotation = tpTarget.rotation;
-            controller.enabled = true;
+            StartCoroutine(playLoadingAnim(other));
         }
         else
         {
             notAllowed.SetActive(true);
         }
+    }
+
+    public IEnumerator playLoadingAnim(Collider other)
+    {
+        controller.enabled = false;
+        canvasLoading.SetActive(true);
+        canvasLoadingAnimator.SetBool("load",true);
+        yield return new WaitForSeconds(1f);
+        cvCamINT.m_Priority = CamPriority;
+        other.gameObject.transform.position = tpToTarget.position;
+        other.gameObject.transform.rotation = tpToTarget.rotation;
+        controller.enabled = true;
+        canvasLoadingAnimator.SetBool("load",false);
     }
 
     private void OnTriggerExit(Collider other)
