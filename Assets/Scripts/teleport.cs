@@ -30,7 +30,6 @@ public class teleport : MonoBehaviour
     {
         canvasLoadingGroup.alpha = 0;
         _inventaire = FindObjectOfType<inventaire>();
-        _reparation = FindObjectOfType<reparation>();
     }
 
     void Update()
@@ -40,7 +39,7 @@ public class teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_reparation.canOpen == true)
+        if (_inventaire.canOpen == true)
         {
             StartCoroutine(playLoadingAnim(other));
         }

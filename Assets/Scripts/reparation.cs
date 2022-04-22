@@ -12,8 +12,8 @@ public class reparation : MonoBehaviour
     public GameObject keyPrefabs;
     public Transform spwnPoint;
 
-    public bool canOpen;
-    
+
+
     void Start()
     {
         _inventaire = FindObjectOfType<inventaire>();
@@ -24,12 +24,11 @@ public class reparation : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void repare()
     {
-        if (_inventaire.count == 3)
-        {
-            canOpen = true;
-            Instantiate(keyPrefabs, spwnPoint.position, Quaternion.identity);
-        }
+        Instantiate(keyPrefabs, spwnPoint.position, Quaternion.identity);
+        _inventaire.count = 0;
+        _inventaire.counter.text = _inventaire.count.ToString("0");
+        Destroy(this.gameObject);
     }
 }

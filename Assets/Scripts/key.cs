@@ -3,22 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class key : MonoBehaviour
+public class Key : MonoBehaviour
 {
     private inventaire _inventaire;
-
-    private void Start()
+    
+    void Start()
     {
         _inventaire = FindObjectOfType<inventaire>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Update()
     {
-        Destroy(this.gameObject,0.1f);
+        
     }
 
-    private void OnDestroy()
+    private void OnTriggerEnter(Collider other)
     {
-        _inventaire.takeKey();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _inventaire.canOpen = true;
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -1,0 +1,24 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class KeyPart : MonoBehaviour
+{
+    private inventaire _inventaire;
+
+    private void Start()
+    {
+        _inventaire = FindObjectOfType<inventaire>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject,0.1f);
+    }
+
+    private void OnDestroy()
+    {
+        _inventaire.takePartKey();
+    }
+}
