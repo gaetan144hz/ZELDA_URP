@@ -13,6 +13,8 @@ using UnityEngine.InputSystem;
     public TextMeshProUGUI counter;
     public int count;
     public int oneKey;
+    
+    public GameObject part;
 
     private reparation _reparation;
     private GameObject lastTriggerGameObject;
@@ -35,12 +37,17 @@ using UnityEngine.InputSystem;
 
     public void OnRepare(InputValue value)
     {
-        if (value.isPressed || lastTriggerGameObject == null)
+        if (value.isPressed && count == 3 || lastTriggerGameObject == null)
         {
             lastTriggerGameObject.GetComponent<reparation>();
             _reparation.repare();
             source.clip = sounds[0];
             source.Play();
+        }
+        else
+        {
+            part.SetActive(true);
+            Debug.Log("Parti de Clé manquante...");
         }
     }
 
@@ -57,6 +64,7 @@ using UnityEngine.InputSystem;
     {
         if (other.gameObject.CompareTag("TableRepare"))
         {
+            part.SetActive(false);
             return;
         }
         lastTriggerGameObject = null;

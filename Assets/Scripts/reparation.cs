@@ -12,7 +12,7 @@ public class reparation : MonoBehaviour
     public GameObject keyPrefabs;
     public Transform spwnPoint;
 
-
+    public GameObject partUI;
 
     void Start()
     {
@@ -22,6 +22,14 @@ public class reparation : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            partUI.SetActive(false);
+        }
     }
 
     public void repare()
