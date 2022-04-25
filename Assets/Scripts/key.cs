@@ -21,6 +21,8 @@ public class Key : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            _inventaire.source.clip = _inventaire.sounds[2];
+            _inventaire.source.Play();
             _inventaire.canOpen = true;
             Destroy(this.gameObject);
         }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class teleport : MonoBehaviour
 {
@@ -42,6 +42,9 @@ public class teleport : MonoBehaviour
         if (_inventaire.canOpen == true)
         {
             StartCoroutine(playLoadingAnim(other));
+            var index = Random.Range(0, _inventaire.doorSounds.Length);
+            _inventaire.source.clip = _inventaire.doorSounds[index];
+            _inventaire.source.Play();
         }
         else
         {

@@ -1,13 +1,15 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+ using Random = System.Random;
 
-public class inventaire : MonoBehaviour
+ public class inventaire : MonoBehaviour
 {
+    [Header("Count")]
     public TextMeshProUGUI counter;
     public int count;
     public int oneKey;
@@ -16,6 +18,10 @@ public class inventaire : MonoBehaviour
     private GameObject lastTriggerGameObject;
     
     public bool canOpen;
+
+    public AudioClip[] sounds;
+    public AudioClip[] doorSounds;
+    public AudioSource source;
     
     void Start()
     {
@@ -33,6 +39,8 @@ public class inventaire : MonoBehaviour
         {
             lastTriggerGameObject.GetComponent<reparation>();
             _reparation.repare();
+            source.clip = sounds[0];
+            source.Play();
         }
     }
 
@@ -56,6 +64,8 @@ public class inventaire : MonoBehaviour
 
     public void takePartKey()
     {
+        source.clip = sounds[1];
+        source.Play();
         count += oneKey;
         counter.text = count.ToString("0");
     }

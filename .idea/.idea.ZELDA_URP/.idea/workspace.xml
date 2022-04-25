@@ -30,6 +30,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -65,6 +66,7 @@
       <workItem from="1650463753821" duration="3359000" />
       <workItem from="1650526842964" duration="6934000" />
       <workItem from="1650616506154" duration="18597000" />
+      <workItem from="1650904837414" duration="3523000" />
     </task>
     <servers />
   </component>
