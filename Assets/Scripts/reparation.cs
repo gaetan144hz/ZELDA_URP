@@ -13,6 +13,7 @@ public class reparation : MonoBehaviour
     public Transform spwnPoint;
 
     public GameObject partUI;
+    public GameObject vfxParticle;
 
     void Start()
     {
@@ -37,6 +38,11 @@ public class reparation : MonoBehaviour
         Instantiate(keyPrefabs, spwnPoint.position, Quaternion.identity);
         _inventaire.count = 0;
         _inventaire.counter.text = _inventaire.count.ToString("0");
-        Destroy(this.gameObject);
+        Destroy(this.gameObject,0.5f);
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(vfxParticle, transform.position, Quaternion.identity);
     }
 }
